@@ -1,0 +1,174 @@
+/* Accessible onboarding. Everything is scoped under .ax so it cannot leak into the portfolio. */
+.ax {
+  --ax-bg: #ffffff;
+  --ax-fg: #1b1b1f;
+  --ax-muted: #4a4a55;
+  --ax-line: #8a8a96;
+  --ax-card: #f4f5fa;
+  --ax-accent: #1d4ed8;
+  --ax-accent-fg: #ffffff;
+  --ax-on: #e3ecff;
+  --ax-error: #b00020;
+  --ax-focus: #ff9d00;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ax-fg);
+  background: var(--ax-bg);
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, 'Segoe UI', 'Noto Sans Ethiopic', 'Nyala', sans-serif;
+  text-align: left;
+}
+.ax *, .ax *::before, .ax *::after { box-sizing: border-box; }
+.ax.ax-s0 { font-size: 16px; }
+.ax.ax-s1 { font-size: 18px; }
+.ax.ax-s2 { font-size: 22px; }
+.ax.ax-s3 { font-size: 28px; }
+
+.ax.ax-hc {
+  --ax-bg: #000000;
+  --ax-fg: #ffffff;
+  --ax-muted: #ffffff;
+  --ax-line: #ffffff;
+  --ax-card: #000000;
+  --ax-accent: #ffd400;
+  --ax-accent-fg: #000000;
+  --ax-on: #1a1a00;
+  --ax-error: #ff8a8a;
+  --ax-focus: #00e5ff;
+}
+
+/* Focus is always visible */
+.ax :focus-visible {
+  outline: 4px solid var(--ax-focus);
+  outline-offset: 2px;
+}
+.ax-card:has(input:focus-visible) {
+  outline: 4px solid var(--ax-focus);
+  outline-offset: 2px;
+}
+
+.ax-sr {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Settings bar */
+.ax-prefs {
+  display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center;
+  padding-bottom: 0.75rem; margin-bottom: 1rem;
+  border-bottom: 2px solid var(--ax-line);
+}
+
+/* Layout helpers */
+.ax-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin: 0.75rem 0; }
+.ax-tools { align-items: flex-start; }
+.ax-nav { margin-top: 1.25rem; }
+.ax-foot { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--ax-line); }
+
+/* Text */
+.ax-engine { margin: 0; }
+.ax-title { font-size: 1.5em; margin: 0 0 0.25rem; line-height: 1.25; }
+.ax-hint { color: var(--ax-muted); margin: 0.25rem 0 0.75rem; }
+.ax-error {
+  color: var(--ax-error); font-weight: 600; margin: 0.5rem 0;
+  padding-left: 0.75rem; border-left: 4px solid var(--ax-error);
+}
+.ax-q { font-size: 1.35em; font-weight: 700; line-height: 1.3; }
+.ax-opt { font-weight: 400; color: var(--ax-muted); font-size: 0.8em; }
+.ax-label, .ax-legend { display: block; margin: 0 0 0.25rem; padding: 0; }
+.ax-label-small { display: block; font-weight: 600; margin: 0.5rem 0; }
+.ax-fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.ax-qicon { font-size: 2.2em; display: block; margin-bottom: 0.25rem; color: var(--ax-accent); }
+.ax-private { display: flex; align-items: center; gap: 0.4rem; color: var(--ax-muted); font-size: 0.9em; margin: 0.5rem 0; }
+.ax-link { color: var(--ax-accent); word-break: break-all; }
+.ax h3.ax-q { margin: 0 0 0.5rem; }
+
+/* Progress */
+.ax-progress { margin: 1rem 0 0.25rem; font-weight: 600; }
+.ax-bar { width: 100%; height: 0.6rem; margin-bottom: 1rem; accent-color: var(--ax-accent); }
+
+/* Inputs */
+.ax-input {
+  display: block; width: 100%; min-height: 3rem;
+  font: inherit; color: inherit; background: var(--ax-bg);
+  padding: 0.6rem 0.75rem; border: 2px solid var(--ax-line); border-radius: 0.5rem;
+}
+.ax-input[aria-invalid='true'] { border-color: var(--ax-error); border-width: 3px; }
+textarea.ax-input { resize: vertical; }
+
+/* Buttons (48px+ touch targets) */
+.ax-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  min-height: 3rem; min-width: 3rem; padding: 0.5rem 1.1rem;
+  font: inherit; font-weight: 600; color: var(--ax-fg); background: var(--ax-card);
+  border: 2px solid var(--ax-line); border-radius: 0.6rem; cursor: pointer;
+}
+.ax-btn:hover:not(:disabled) { border-color: var(--ax-accent); }
+.ax-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.ax-btn svg { font-size: 1.3em; flex: none; }
+.ax-btn-primary { background: var(--ax-accent); color: var(--ax-accent-fg); border-color: var(--ax-accent); }
+.ax-btn-ghost { background: transparent; }
+.ax-btn-small { min-height: 2.75rem; padding: 0.25rem 0.75rem; font-size: 0.9em; }
+.ax-btn[aria-pressed='true'] { background: var(--ax-accent); color: var(--ax-accent-fg); border-color: var(--ax-accent); }
+
+/* Choice cards */
+.ax-cards { display: grid; gap: 0.75rem; margin: 0.75rem 0; }
+.ax-card {
+  position: relative; display: flex; align-items: center; gap: 0.9rem;
+  min-height: 3.5rem; padding: 0.75rem 1rem; text-align: left;
+  font: inherit; color: inherit; background: var(--ax-card);
+  border: 2px solid var(--ax-line); border-radius: 0.75rem; cursor: pointer;
+}
+.ax-card:hover { border-color: var(--ax-accent); }
+.ax-card.is-on { background: var(--ax-on); border-color: var(--ax-accent); border-width: 3px; }
+.ax-card.is-on::after {
+  content: '✓'; position: absolute; right: 1rem; font-weight: 700; font-size: 1.3em; color: var(--ax-accent);
+}
+.ax-card input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.ax-card span { padding-right: 1.5rem; }
+.ax-cardicon { font-size: 1.8em; flex: none; color: var(--ax-accent); }
+.ax-cardbtn { width: 100%; }
+
+/* Simple mode: bigger icons and cards */
+.ax-simple .ax-cardicon { font-size: 3rem; }
+.ax-simple .ax-card { min-height: 5rem; font-size: 1.1em; }
+.ax-simple .ax-qicon { font-size: 3.5em; }
+
+/* Panels */
+.ax-panel, .ax-voice {
+  margin: 0.75rem 0; padding: 1rem;
+  border: 2px solid var(--ax-line); border-radius: 0.75rem; background: var(--ax-card);
+  flex-basis: 100%;
+}
+.ax-panel-title { margin: 0 0 0.25rem; font-size: 1.15em; }
+.ax-voice-status { font-weight: 600; margin: 0 0 0.5rem; }
+
+/* Review */
+.ax-review { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 0.75rem; }
+.ax-review li {
+  display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; justify-content: space-between; align-items: center;
+  padding: 0.75rem 1rem; border: 2px solid var(--ax-line); border-radius: 0.75rem;
+}
+
+/* Dialog (private support) */
+.ax-dialog {
+  width: min(44rem, calc(100vw - 1rem)); max-height: calc(100vh - 1rem); overflow: auto;
+  padding: 1rem; color: var(--ax-fg); background: var(--ax-bg);
+  border: 3px solid var(--ax-accent); border-radius: 1rem;
+}
+.ax-dialog::backdrop { background: rgba(0, 0, 0, 0.6); }
+.ax-dialog-close { margin-top: 1rem; }
+
+@media (min-width: 40rem) {
+  .ax-cards.ax-two { grid-template-columns: 1fr 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ax * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
