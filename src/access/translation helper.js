@@ -63,7 +63,9 @@ export const STRINGS = {
     supportTitle: 'Ask for support privately',
     supportDone: 'Your request is saved privately. You did not have to explain why or show any proof.',
     resumeFound: 'Welcome back. You can carry on where you stopped.',
-    loading: 'Loading…' }
+    loading: 'Loading…',
+    zoom: 'Zoom',
+    zoomReset: 'Reset zoom to 100 percent' }
 }
 
 export function translate(lang, key, vars) {

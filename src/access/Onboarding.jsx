@@ -44,6 +44,7 @@ const T = {
     en: "Your profile is saved. Open this page again at any time to see or change it. Your support choices stay private on this device.",
   },
   next: { en: "Go to jobs" },
+  welcome: { en: "Welcome ! Write your welcome text here." },
 };
 
 function Choose({ onPick, hasDraft }) {
@@ -51,6 +52,7 @@ function Choose({ onPick, hasDraft }) {
   const t = (k) => pick(T[k], lang, simple);
   return (
     <section className="ax-engine">
+      <h1 className="ax-title">{t("welcome")}</h1>
       <h2 className="ax-title" tabIndex={-1}>
         {t("chooseTitle")}
       </h2>

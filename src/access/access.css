@@ -14,18 +14,23 @@
   line-height: 1.55;
   color: var(--ax-fg);
   background: var(--ax-bg);
-  max-width: 44rem;
-  margin: 0 auto;
+  width: 100%;
   padding: 1rem;
   box-sizing: border-box;
   font-family: system-ui, -apple-system, 'Segoe UI', 'Noto Sans Ethiopic', 'Nyala', sans-serif;
   text-align: left;
 }
 .ax *, .ax *::before, .ax *::after { box-sizing: border-box; }
-.ax.ax-s0 { font-size: 16px; }
-.ax.ax-s1 { font-size: 18px; }
-.ax.ax-s2 { font-size: 22px; }
-.ax.ax-s3 { font-size: 28px; }
+.ax-inner { max-width: 44rem; margin: 0 auto; }
+
+/* Zoom indicator: a percentage in the settings bar, plus a short pop-up when it changes */
+.ax-zoom { min-width: 4.5rem; }
+.ax-toast {
+  position: fixed; top: 1rem; left: 50%; transform: translateX(-50%); z-index: 1000;
+  padding: 0.5rem 1.25rem; font-size: 1.25rem; font-weight: 700;
+  color: var(--ax-bg); background: var(--ax-fg); border: 3px solid var(--ax-accent);
+  border-radius: 999px; pointer-events: none;
+}
 
 .ax.ax-hc {
   --ax-bg: #000000;
@@ -172,3 +177,6 @@ textarea.ax-input { resize: vertical; }
 @media (prefers-reduced-motion: reduce) {
   .ax * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 }
+
+/* Full-page high contrast (AccessShell paintPage): colour the page behind the form too */
+html.ax-page-hc, html.ax-page-hc body { background: #000000; }
